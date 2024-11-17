@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcome Page</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f9;
+            text-align: center;
+        }
+        .container {
+            padding: 20px;
+        }
+        .form-container {
+            margin: 20px auto;
+            max-width: 400px;
+            background: #ffffff;
+            padding: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            border-radius: 8px;
+        }
+        .form-container input[type="text"] {
+            width: calc(100% - 22px);
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        .form-container button {
+            padding: 10px 20px;
+            background: #007bff;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        .form-container button:hover {
+            background: #0056b3;
+        }
+        .news {
+            margin-top: 20px;
+        }
+        .news-item {
+            margin: 10px 0;
+            text-align: left;
+            padding: 10px;
+            background: #ffffff;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        .news-item a {
+            text-decoration: none;
+            color: #007bff;
+        }
+        .news-item a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Welcome to the News Search Page</h1>
+        <div class="form-container">
+            <form method="POST">
+                <input type="text" name="topic" placeholder="Enter topic to search" required>
+                <button type="submit">Search</button>
+            </form>
+        </div>
+        {% if news %}
+        <div class="news">
+            <h2>Search Results:</h2>
+            {% for article in news %}
+            <div class="news-item">
+                <a href="{{ article.link }}" target="_blank">{{ article.headline }}</a>
+            </div>
+            {% endfor %}
+        </div>
+        {% endif %}
+    </div>
+</body>
+</html>
